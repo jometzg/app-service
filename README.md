@@ -69,3 +69,7 @@ https://api.ipify.org?format=json which will return the caller's IP address as a
 
 So in the Kudu console, this would look like below:
 ![A curl request in Kudu](https://github.com/jometzg/app-service/blob/master/kudu-cmd-curl.png)
+
+
+# Summary
+Azure web apps provide an easy on-ramp for deploying web and API services to Azure. But there is also considerable power behind the scenes. With the use of diagnostics logs and the Kudu console many web app issues can be debugged easily.
