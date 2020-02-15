@@ -1,13 +1,16 @@
 # Access Restrictions - recap
-Azure app services (web apps) have for a long time had an access restriction feature where requests in-bound to the app service can be restricted by IP address or IP address range. This now includes VNet subnets, but that is another story. Often when using a combination of app services it can be difficult to debug issues. This article hopes to provide some pointers.
+Azure app services (web apps) have for a long time had an access restriction feature where requests in-bound to the app service can be restricted by IP address or IP address range. This now includes VNet subnets, but that is another story. Often when using a combination of app services it can be difficult to debug issues - is it a problem with the sender or the recipient?
+
+This article hopes to provide some pointers.
 
 # TL;DR
-If you want to know the actual IP address of an app service that is issuing a request, go in Kudu of the app service and open a CMD prompt:
+At a sender web app, if you want to know the actual IP address of that app service that is issuing a request, go in Kudu of the web app and open a CMD prompt:
 
 `curl https://api.ipify.org?format=json`
 
 This will then return the senders IP address.
-Unfortunately, app service "AppServiceHTTPLogs" diagnostic logs don't appear to report blocked requests for a destination web app. So, to debug these, it is best to switch off access restrictions and then look through the logs for your requests - these will include the sender's IP address.
+
+At the receiptient's end, its not quite so easy. In "Diagnostic Setting",  "AppServiceHTTPLogs" diagnostic logs don't appear to report blocked requests for a destination web app. So, to debug these, it is best to switch off access restrictions and then look through the logs for your requests - these will include the sender's IP address.
 
 # More Details
 Azure app service is a multi-tenant service for hosting web applications. This multi-tenancy provides many advantages for customers in terms of the density of web apps, but it also means that a number of web apps will share common in-bound and out-bound IP addresses.
