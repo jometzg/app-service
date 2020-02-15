@@ -53,9 +53,9 @@ Kudu has a very rich set of features, which can be found [here](https://github.c
 
 You can also open up a command prompt to the Kudu console and then interact with Kudu on the command line. The most useful of these are:
 
--nslookup - DNS name lookup
--tcpping - a replacement for ping
--curl - send HTTP requests
+* nslookup - DNS name lookup
+* tcpping - a replacement for ping
+* curl - send HTTP requests
 
 Curl is really useful in that you can send HTTP requests elsewhere and look at the response. This is very good for debugging outbound connectivity issues from your web app to the outside world.
 
