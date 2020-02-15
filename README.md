@@ -16,7 +16,7 @@ At a sender web app, if you want to know the actual IP address of that app servi
 This will then return that sender web app's IP address.
 ![Curl](https://github.com/jometzg/app-service/blob/master/curl.png)
 
-At the receiptient's end, its not quite so easy. In "Diagnostic Setting",  "AppServiceHTTPLogs" diagnostic logs don't appear to report blocked requests for a destination web app. So, to debug these, it is best to switch off access restrictions and then look through the logs for your requests - these will include the sender's IP address.
+At the receipient's end, its not quite so easy. In "Diagnostic Setting",  "AppServiceHTTPLogs" diagnostic logs don't appear to report blocked requests for a destination web app. So, to debug these, it is best to switch off access restrictions and then look through the logs for your requests - these will include the sender's IP address.
 
 # More Details
 Azure app service is a multi-tenant service for hosting web applications. This multi-tenancy provides many advantages for customers in terms of the density of web apps, but it also means that a number of web apps will share common in-bound and out-bound IP addresses.
@@ -44,7 +44,7 @@ Finally, if you download the blob, you can see each of the requests, which inclu
 
 So you don't get lost, it may be better to send the requests to an uncommon URL, to make your searching easier. The diagnostics logs are ordered by date and time and get amended every 5 mimutes or so - so timing is important too when searching.
 
-As stated earlier, these logs to do show denied requests from when an access restriction is set, so it may be better to remove the access restruction, run the test and then put the restriction back - this may not be a recommended apporach for a production environment, however.
+As stated earlier, these logs to do show denied requests from when an access restriction is set, so it may be better to remove the access restruction, run the test and then put the restriction back - this may not be a recommended approach for a production environment, however :-)
 
 # Kudu
 Every web app has another endpoint which has a large numner of useful management features. This can be found in the Azure portal under "Advanced Tools" and has a separate URL of https://web-app-name.scm.azurewebsites.net.
