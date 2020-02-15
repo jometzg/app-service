@@ -3,7 +3,7 @@ Azure app services (web apps) have for a long time had an access restriction fea
 
 Often when using a combination of app services it can be difficult to debug issues 
 ![Two web apps](https://github.com/jometzg/app-service/blob/master/web-to-web.png)
-- is it a problem with the sender or the recipient?
+Is it a problem with the sender or the recipient?
 
 This article hopes to provide some pointers.
 
@@ -12,7 +12,8 @@ At a sender web app, if you want to know the actual IP address of that app servi
 
 `curl https://api.ipify.org?format=json`
 
-This will then return the senders IP address.
+This will then return that sender web app's IP address.
+![Curl](https://github.com/jometzg/app-service/blob/master/curl.png)
 
 At the receiptient's end, its not quite so easy. In "Diagnostic Setting",  "AppServiceHTTPLogs" diagnostic logs don't appear to report blocked requests for a destination web app. So, to debug these, it is best to switch off access restrictions and then look through the logs for your requests - these will include the sender's IP address.
 
