@@ -2,7 +2,7 @@
 Azure app services (web apps) have for a long time had an access restriction feature where requests in-bound to the app service can be restricted by IP address or IP address range. This now includes VNet subnets, but that is another story. 
 
 Often when using a combination of app services it can be difficult to debug issues 
-![Two web apps](https://octodex.github.com/images/yaktocat.png)
+![Two web apps](https://github.com/jometzg/app-service/blob/master/web-to-web.png)
 - is it a problem with the sender or the recipient?
 
 This article hopes to provide some pointers.
@@ -23,7 +23,21 @@ App services provide a rich set of features, one of which is access restrictions
 
 
 # Diagnostics
+Diagnostics can be setup here:
+![Set diagnostics to storage](https://github.com/jometzg/app-service/blob/master/web-app-set-storage-diagnostics.png)
 
+The resultant diagnostics are created in a blob container:
+![Diagnostics blob container](https://github.com/jometzg/app-service/blob/master/diagnostics-blob-container.png)
+
+The actual blobs are under a fair number of folders:
+![Diagnostics blob](https://github.com/jometzg/app-service/blob/master/diagnostics-blob-document.png)
+
+Finally, if you download the blob, you can see each of the requests, which includes the sender's IP address.
+![Diagnostics blob contents](https://github.com/jometzg/app-service/blob/master/diagnostics-blob-document-contents.png)
+
+So you don't get lost, it may be better to send the requests to an uncommon URL, to make your searching easier. The diagnostics logs are ordered by date and time and get amended every 5 mimutes or so - so timing is important too when searching.
+
+As stated earlier, these logs to do show denied requests from when an access restriction is set, so it may be better to remove the access restruction, run the test and then put the restriction back - this may not be recommended for a production environment.
 
 # Kudu
 Every web app has another endpoint which has a large numner of useful management features. This can be found in the Azure portal under "Advanced Tools" and has a separate URL of https://web-app-name.scm.azurewebsites.net.
@@ -40,10 +54,11 @@ Curl is really useful in that you can send HTTP requests elsewhere and look at t
 
 It is often useful to be able to know exactly what IP address your web app is using when making external requests. For some time, the portal, in the web app's "Properties" section a list of potential IP addresses that an app service may use. See below:
 
+![Web app outbound IPs](https://github.com/jometzg/app-service/blob/master/web-app-properties-outbound.png)
 
 But it is often more useful to know exactly which of these is being used. One way I have done this in the past is to write another small web app which, on receipt of a request, looks at the request headers and returns the sender's IP address. This works, but is extra work. As it is often better to buy/use than build, it would be handy if someone else has done this before. This is where the likes of the web site https://www.ipify.org/ comes to the rescuse. This has an easy to consume API request:
 
 https://api.ipify.org?format=json which will return the caller's IP address as a nice piece of JSON. For example {"ip":"98.207.254.136"}
 
 So in the Kudu console, this would look like below:
-
+![A curl request in Kudu](https://github.com/jometzg/app-service/blob/master/kudu-cmd-curl.png)
