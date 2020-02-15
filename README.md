@@ -1,5 +1,9 @@
 # Access Restrictions - recap
-Azure app services (web apps) have for a long time had an access restriction feature where requests in-bound to the app service can be restricted by IP address or IP address range. This now includes VNet subnets, but that is another story. Often when using a combination of app services it can be difficult to debug issues - is it a problem with the sender or the recipient?
+Azure app services (web apps) have for a long time had an access restriction feature where requests in-bound to the app service can be restricted by IP address or IP address range. This now includes VNet subnets, but that is another story. 
+
+Often when using a combination of app services it can be difficult to debug issues 
+![Two web apps](https://octodex.github.com/images/yaktocat.png)
+- is it a problem with the sender or the recipient?
 
 This article hopes to provide some pointers.
 
