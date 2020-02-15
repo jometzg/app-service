@@ -1,7 +1,7 @@
 # Access Restrictions - recap
-Azure app services (web apps) have for a long time had an access restriction feature where requests in-bound to the app service can be restricted by IP address or IP address range. This now includes VNet subnets, but that is another story. 
+When building a service that uses several web apps, there is often the need to lock down some web apps from only receiving request of other Azure web apps. Azure app services have for a long time had an access restriction feature where requests in-bound to a web app can be restricted by IP address or IP address range. This is form of access restriction does not restrict to specific web apps, but it is nevertheless useful. 
 
-Often when using a combination of app services it can be difficult to debug issues 
+Often it can be difficult to debug issues with access restriction. 
 ![Two web apps](https://github.com/jometzg/app-service/blob/master/web-to-web.png)
 Is it a problem with the sender or the recipient?
 
@@ -22,6 +22,9 @@ Azure app service is a multi-tenant service for hosting web applications. This m
 
 App services provide a rich set of features, one of which is access restrictions. Access restrictions allow the definition of access control rules that allow or deny requests to a web app. These are based on IP addresses, IP address ranges and VNet subnets.
 
+App services also provide rich diagnostic capabilities from diagnostic logs to the [Kudu engine](https://github.com/projectkudu/kudu/wiki)
+
+We will look in details on how to setup diagnostics to look at inbound requests and then how to use the Kudu engine to send outbound requests from a web app - this can be used to discover routing issues and to establish the outbound IP address of the web app at that point in time.
 
 # Diagnostics
 Diagnostics can be setup here:
