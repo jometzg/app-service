@@ -1,7 +1,7 @@
 # Access Restrictions - recap
 When building a service that uses several web apps, there is often the need to lock down some web apps from only receiving request of other Azure web apps. Azure app services have for a long time had an access restriction feature where requests in-bound to a web app can be restricted by IP address or IP address range. This is form of access restriction does not restrict to specific web apps, but it is nevertheless useful. 
 
-Often it can be difficult to debug issues with access restriction. 
+Often though, it can be difficult to debug issues with access restriction. 
 ![Two web apps](https://github.com/jometzg/app-service/blob/master/web-to-web.png)
 
 Is it a problem with the sender or the recipient?
