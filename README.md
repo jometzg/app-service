@@ -28,7 +28,9 @@ App services also provide rich diagnostic capabilities from diagnostic logs to t
 We will look in details on how to setup diagnostics to look at inbound requests and then how to use the Kudu engine to send outbound requests from a web app - this can be used to discover routing issues and to establish the outbound IP address of the web app at that point in time.
 
 # Diagnostics
-Diagnostics can be setup here:
+In order to see what requests are inbound to a web app, requires that diagnostics is turned on for that web app. Diagnostics can be sent to storage, event hubs and log analytics.
+
+Let's keep things simple and setup diagnostics to an Azure storage account. Diagnostics can be setup here:
 ![Set diagnostics to storage](https://github.com/jometzg/app-service/blob/master/web-app-set-storage-diagnostics.png)
 
 The resultant diagnostics are created in a blob container:
@@ -42,18 +44,18 @@ Finally, if you download the blob, you can see each of the requests, which inclu
 
 So you don't get lost, it may be better to send the requests to an uncommon URL, to make your searching easier. The diagnostics logs are ordered by date and time and get amended every 5 mimutes or so - so timing is important too when searching.
 
-As stated earlier, these logs to do show denied requests from when an access restriction is set, so it may be better to remove the access restruction, run the test and then put the restriction back - this may not be recommended for a production environment.
+As stated earlier, these logs to do show denied requests from when an access restriction is set, so it may be better to remove the access restruction, run the test and then put the restriction back - this may not be a recommended apporach for a production environment, however.
 
 # Kudu
 Every web app has another endpoint which has a large numner of useful management features. This can be found in the Azure portal under "Advanced Tools" and has a separate URL of https://web-app-name.scm.azurewebsites.net.
 
-Kudu has a very rich set of features, which can be found here 
+Kudu has a very rich set of features, which can be found [here](https://github.com/projectkudu/kudu/wiki)
 
-You can also open up a command prompt to the Kudu console and then interact with Kudu on the command line. 
+You can also open up a command prompt to the Kudu console and then interact with Kudu on the command line. The most useful of these are:
 
-nslookup - DNS name lookup
-tcpping - a replacement for ping
-curl - send HTTP requests
+-nslookup - DNS name lookup
+-tcpping - a replacement for ping
+-curl - send HTTP requests
 
 Curl is really useful in that you can send HTTP requests elsewhere and look at the response. This is very good for debugging outbound connectivity issues from your web app to the outside world.
 
