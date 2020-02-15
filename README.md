@@ -3,6 +3,7 @@ When building a service that uses several web apps, there is often the need to l
 
 Often it can be difficult to debug issues with access restriction. 
 ![Two web apps](https://github.com/jometzg/app-service/blob/master/web-to-web.png)
+
 Is it a problem with the sender or the recipient?
 
 This article hopes to provide some pointers.
