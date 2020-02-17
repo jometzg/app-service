@@ -46,6 +46,8 @@ So you don't get lost, it may be better to send the requests to an uncommon URL,
 
 As stated earlier, these logs to do show denied requests from when an access restriction is set, so it may be better to remove the access restruction, run the test and then put the restriction back - this may not be a recommended approach for a production environment, however :-)
 
+** There may be soon an extra log "AppServiceIPSecAuditLogs" which may show denied requests. This will mean that access restrictions can be tested without switching off the feature. **
+
 # Kudu
 Every web app has another endpoint which has a large number of useful management features. This can be found in the Azure portal under "Advanced Tools" and has a separate URL of https://web-app-name.scm.azurewebsites.net.
 
