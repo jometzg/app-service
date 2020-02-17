@@ -1,4 +1,4 @@
-# Access Restrictions - recap
+# Access Restrictions
 When building a service that uses several web apps, there is often the need to lock down some web apps from only receiving request of other Azure web apps. Azure app services have for a long time had an access restriction feature where requests in-bound to a web app can be restricted by IP address or IP address range. This is form of access restriction does not restrict to specific web apps, but it is nevertheless useful. 
 
 Often though, it can be difficult to debug issues with access restriction. 
